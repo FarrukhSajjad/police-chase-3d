@@ -4,15 +4,55 @@ using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float minFindDistance;
+    public Transform[] protestors;
+
+    public Transform currentProtestor;
+
+    public static Level Instance;
+
+    private void Awake()
     {
-        
+        if (Instance == null)
+        {
+            Instance = this;
+            return;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
-        
+        if (PlayerCharacter.Instance == null) return;
+        currentProtestor = FindNearByProtestors(Level.Instance.protestors);
+        if (currentProtestor != null)
+        {
+
+        }
     }
+
+
+    private Transform FindNearByProtestors(Transform[] protestors)
+    {
+        Transform tMin = null;
+        float minDist = Level.Instance.minFindDistance;
+
+        Vector3 currentPos = PlayerCharacter.Instance.transform.position;
+        foreach (var t in protestors)
+        {
+            float dist = Vector3.Distance(t.position, currentPos);
+            if (dist < minDist)
+            {
+                tMin = t;
+                minDist = dist;
+            }
+        }
+
+        return tMin;
+
+    }
+
 }
