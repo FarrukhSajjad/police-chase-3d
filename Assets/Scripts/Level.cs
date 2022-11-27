@@ -5,6 +5,8 @@ public class Level : MonoBehaviour
 {
     public List<GameObject> protestors = new List<GameObject>();
 
+    public bool isLevelCompleted = false;
+
     public static Level Instance;
 
     private void Awake()
@@ -17,6 +19,15 @@ public class Level : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    private void Update()
+    {
+        if (!isLevelCompleted && protestors.Count == 0)
+        {
+            Debug.Log("Level is completed");
+            isLevelCompleted = true;
         }
     }
 
