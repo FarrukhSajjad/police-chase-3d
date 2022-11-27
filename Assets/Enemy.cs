@@ -7,12 +7,19 @@ public class Enemy : MonoBehaviour
 
     public Animator enemyRunAnimator;
 
+    public bool isDead;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Police Entered the enemy collider");
-            PlayerCharacter.Instance.playerAnimatorController.SetBool("attack", true);
+            if (!this.isDead)
+            {
+                PlayerCharacter.Instance.playerAnimatorController.SetBool("attack", true);
+
+                Invoke(nameof(EnemyDeath), 0.2f);
+            }
+
         }
     }
 
@@ -20,8 +27,9 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Police Extied the enemy collider");
+
             PlayerCharacter.Instance.playerAnimatorController.SetBool("attack", false);
+
         }
     }
 
@@ -29,7 +37,6 @@ public class Enemy : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Police Entered the enemy collider");
             PlayerCharacter.Instance.playerAnimatorController.SetBool("attack", true);
         }
     }
@@ -49,10 +56,24 @@ public class Enemy : MonoBehaviour
 
             enemyAgent.SetDestination(newPos);
         }
+
         else
         {
             enemyRunAnimator.SetBool("isRunning", false);
             this.gameObject.transform.LookAt(PlayerCharacter.Instance.transform);
+        }
+
+    }
+
+    private void EnemyDeath()
+    {
+        if (!this.isDead)
+        {
+            enemyRunAnimator.SetBool("dying", true);
+            this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            Level.Instance.protestors.Remove(this.gameObject);
+            Destroy(this.gameObject, 1.5f);
+            this.isDead = true;
         }
     }
 }
