@@ -10,6 +10,12 @@ public class Level : MonoBehaviour
 
     public Transform playerSpawnPosition;
 
+    public bool showAdAfterThisLevel;
+
+    public int enemiesInThisLevel;
+
+    public int enemiesKilled = 0;
+
     public static Level Instance;
 
     private void Awake()
@@ -30,6 +36,11 @@ public class Level : MonoBehaviour
         //Spawn Player
         var player = Instantiate(playerPrefab, playerSpawnPosition.position, Quaternion.identity);
         LevelManager.Instance.objectFadeFollow.playerTransform = player.transform;
+        var levelNumber = LevelManager.Instance.currentLevelNumber + 1;
+        UIManager.Instance.levelNumberText.text = $"LEVEL {levelNumber}";
+
+        enemiesInThisLevel = protestors.Count;
+        UIManager.Instance.totalEnemiesToKillText.text = $"{enemiesKilled}/{enemiesInThisLevel}";
     }
 
     private void Update()
