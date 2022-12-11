@@ -1,9 +1,12 @@
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
+    public GameObject offscreenPanelIndicator;
+
     public TextMeshProUGUI levelNumberText;
     public TextMeshProUGUI totalEnemiesToKillText;
 
@@ -11,10 +14,12 @@ public class UIManager : MonoBehaviour
     [Header("UI Panels")]
     public GameObject mainMenuPanel;
     public GameObject gameplayPanel;
+    public GameObject levelCompletePanel;
 
     [Space(10)]
     [Header("Buttons")]
     public Button playButton;
+    public Button nextButton;
 
     public static UIManager Instance;
 
@@ -37,12 +42,24 @@ public class UIManager : MonoBehaviour
                {
                    OnPlayButtonPressed();
                });
+
+
+        nextButton.onClick.AddListener(() =>
+        {
+            OnNextButtonPressed();
+        });
     }
 
     private void OnPlayButtonPressed()
     {
         mainMenuPanel.SetActive(false);
         gameplayPanel.SetActive(true);
+        offscreenPanelIndicator.GetComponent<OffScreenIndicator>().enabled = true;
+    }
 
+    private void OnNextButtonPressed()
+    {
+        Destroy(LevelManager.Instance.currentLevelGO);
+        SceneManager.LoadScene(1);
     }
 }

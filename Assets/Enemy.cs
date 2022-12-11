@@ -71,9 +71,8 @@ public class Enemy : MonoBehaviour
         {
             enemyRunAnimator.SetBool("dying", true);
             this.gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            Level.Instance.enemiesKilled++;
-            UIManager.Instance.totalEnemiesToKillText.text = $"{Level.Instance.enemiesKilled}/{Level.Instance.enemiesInThisLevel}";
-            Level.Instance.protestors.Remove(this.gameObject);
+            Level.Instance.enemiesInThisLevel--;
+            UIManager.Instance.totalEnemiesToKillText.text = Level.Instance.enemiesInThisLevel.ToString();
             Destroy(this.gameObject, 1.5f);
             this.isDead = true;
         }

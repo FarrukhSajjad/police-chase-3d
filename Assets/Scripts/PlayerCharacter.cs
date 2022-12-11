@@ -6,6 +6,8 @@ public class PlayerCharacter : MonoBehaviour
     public GameObject femaleCopBody;
     public GameObject maleCopBody;
 
+    public Transform playerDanceCameraTransform;
+
     public static PlayerCharacter Instance;
 
     private void Awake()

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &727357972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 727357976}
+  m_Layer: 0
+  m_Name: CameraTransform
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &727357976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727357972}
+  m_LocalRotation: {x: 0.0016399611, y: -0.99831873, z: 0.045263506, w: 0.036170505}
+  m_LocalPosition: {x: 0.2876113, y: 1.4020538, z: 3.13}
+  m_LocalScale: {x: 1.0000005, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 530634955869063447}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 5.192, y: -175.85, z: 0}
 --- !u!1 &530634955869129933
 GameObject:
   m_ObjectHideFlags: 0
@@ -1290,6 +1321,7 @@ Transform:
   - {fileID: 530634955869032945}
   - {fileID: 530634955869111245}
   - {fileID: 530634955869048325}
+  - {fileID: 727357976}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1342,6 +1374,7 @@ MonoBehaviour:
   playerAnimatorController: {fileID: 530634955859927025}
   femaleCopBody: {fileID: 530634955869347777}
   maleCopBody: {fileID: 530634955869349877}
+  playerDanceCameraTransform: {fileID: 727357976}
 --- !u!136 &1021781635
 CapsuleCollider:
   m_ObjectHideFlags: 0

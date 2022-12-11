@@ -1,9 +1,9 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Level : MonoBehaviour
 {
-    public List<GameObject> protestors = new List<GameObject>();
 
     public bool isLevelCompleted = false;
     public GameObject playerPrefab;
@@ -13,8 +13,6 @@ public class Level : MonoBehaviour
     public bool showAdAfterThisLevel;
 
     public int enemiesInThisLevel;
-
-    public int enemiesKilled = 0;
 
     public static Level Instance;
 
@@ -39,19 +37,33 @@ public class Level : MonoBehaviour
         var levelNumber = LevelManager.Instance.currentLevelNumber + 1;
         UIManager.Instance.levelNumberText.text = $"LEVEL {levelNumber}";
 
-        enemiesInThisLevel = protestors.Count;
-        UIManager.Instance.totalEnemiesToKillText.text = $"{enemiesKilled}/{enemiesInThisLevel}";
+        UIManager.Instance.totalEnemiesToKillText.text = $"{enemiesInThisLevel}";
     }
 
     private void Update()
     {
-        if (!isLevelCompleted && protestors.Count == 0)
+        if (!isLevelCompleted && enemiesInThisLevel == 0)
         {
             Debug.Log("Level is completed");
             var levelCompletedNumber = LevelManager.Instance.currentLevelNumber++;
             PlayerPrefs.SetInt("level", LevelManager.Instance.currentLevelNumber++);
+            UIManager.Instance.gameplayPanel.SetActive(false);
+            PlayerCharacter.Instance.gameObject.GetComponent<PlayerMovement>().enabled = false;
+            PlayerCharacter.Instance.playerAnimatorController.SetBool("isMoving", false);
+            Destroy(UIManager.Instance.offscreenPanelIndicator);
+            //GameManager.Instance.playerDanceCamera.m_Priority = 11;
+        //UIManager.Instance.levelCompletePanel.SetActive(true);
+
+            // PlayerCharacter.Instance.playerAnimatorController.SetBool("dance", true);
+            StartCoroutine(DelayInShowingLevelCompeletePanel());
             isLevelCompleted = true;
         }
+    }
+
+    private IEnumerator DelayInShowingLevelCompeletePanel()
+    {
+        yield return new WaitForSeconds(1f);
+        UIManager.Instance.levelCompletePanel.SetActive(true);
     }
 
 }
