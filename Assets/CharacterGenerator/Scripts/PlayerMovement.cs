@@ -23,6 +23,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if(GameManager.Instance == null) return;
+        if(!GameManager.Instance.isGameStarted) return;
         if (anim)
         {
             anim.SetBool("isMoving", _isMoving);

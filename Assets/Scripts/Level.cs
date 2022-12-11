@@ -56,6 +56,7 @@ public class Level : MonoBehaviour
 
             // PlayerCharacter.Instance.playerAnimatorController.SetBool("dance", true);
             StartCoroutine(DelayInShowingLevelCompeletePanel());
+            AudioManager.Instance.PlayLevelCompleteCelebrationSound();
             isLevelCompleted = true;
         }
     }

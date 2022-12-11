@@ -52,6 +52,7 @@ public class UIManager : MonoBehaviour
 
     private void OnPlayButtonPressed()
     {
+        GameManager.Instance.isGameStarted = true;
         mainMenuPanel.SetActive(false);
         gameplayPanel.SetActive(true);
         offscreenPanelIndicator.GetComponent<OffScreenIndicator>().enabled = true;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public bool isGameStarted = false;
 
     public static GameManager Instance;
 

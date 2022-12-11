@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
             if (!this.isDead)
             {
                 PlayerCharacter.Instance.playerAnimatorController.SetBool("attack", true);
-
+                AudioManager.Instance.PlayHitSound();
                 Invoke(nameof(EnemyDeath), 0.2f);
             }
 

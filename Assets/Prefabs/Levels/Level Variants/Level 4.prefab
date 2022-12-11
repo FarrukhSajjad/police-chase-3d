@@ -50435,11 +50435,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2183930308679145036, guid: a122590908c390f40a054e378c9f6106, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -32.9
+      value: -26.69
       objectReference: {fileID: 0}
     - target: {fileID: 2183930308679145036, guid: a122590908c390f40a054e378c9f6106, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -44.489998
+      value: -24.93
       objectReference: {fileID: 0}
     - target: {fileID: 6920430791964364686, guid: a122590908c390f40a054e378c9f6106, type: 3}
       propertyPath: m_LocalPosition.x
@@ -50503,11 +50503,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6920430792900854394, guid: a122590908c390f40a054e378c9f6106, type: 3}
       propertyPath: m_Name
-      value: Level 3
+      value: Level 4
       objectReference: {fileID: 0}
     - target: {fileID: 6920430792900854395, guid: a122590908c390f40a054e378c9f6106, type: 3}
       propertyPath: enemiesInThisLevel
-      value: 8
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6920430792900854395, guid: a122590908c390f40a054e378c9f6106, type: 3}
       propertyPath: protestors.Array.size
