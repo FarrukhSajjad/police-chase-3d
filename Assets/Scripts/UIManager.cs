@@ -61,6 +61,6 @@ public class UIManager : MonoBehaviour
     private void OnNextButtonPressed()
     {
         Destroy(LevelManager.Instance.currentLevelGO);
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 }
